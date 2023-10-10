@@ -1,15 +1,43 @@
+/*---------- DEFINIREMOS PALETA DE COLORES ----------*/
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gis: #7575757;
+}
 html {
     font-size: 62.5%;
 }
 body {
-font-size: 16px; 
+    font-size: 16px; 
+    font-family: 'Rajdhani', sans-serif;
 }
 .titulo{
     text-align: center;
-    font-size: 3.8rem; /* 1rem = 10px */
+    font-size: 3.8rem;  /* 1rem = 10px */
 }
 .titulo span {
     font-size: 2rem;
 }
-
-
+.contenedor {
+    width: 120rem;
+    /* margin-top: 0;      separacion que abra de arriba
+    margin-right: auto; separacion que abra de la derecha
+    margin-bottom: 0;   separacion que abra de abajo
+    margin-left: auto;  separacion que abra de la izquierda*/
+    margin: 0 auto;
+}
+/*----- CSS PARA LA NAVEGACION -----*/
+.nav-bg{
+    background-color: var(--secundario);
+}
+.navegacion-principal {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between; /*los enlaces se distribuyen en todo el nav*/
+}
+.navegacion-principal a{
+    color: var(--blanco);
+    text-decoration: none;  /*utilizamos para quitar la linea del enlce*/
+}
