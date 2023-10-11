@@ -4,40 +4,194 @@
     --oscuro: #212121;
     --primario: #ffc107;
     --secundario: #0097a7;
-    --gis: #7575757;
+    --gris: #7575757;
+    --grisClaro: #DFE0F3
 }
+
+/*--- GOLABLES ---*/
 html {
     font-size: 62.5%;
+    box-sizing: border-box; /*implementacion del box model*/
+}
+*, *::before, *::after {
+    box-sizing: inherit; /*el * selecciona todos los elementos*/
 }
 body {
     font-size: 16px; 
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Rajdhani', sans-serif; /*definiendo el tipo de letra que se utilizara*/
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%); /*se utiliza para realizar degradados en css*/
 }
-.titulo{
+.contenedor {
+    max-width: 120rem;
+    /* margin-top: 0;      separacion que abra de arriba
+    margin-right: auto;    separacion que abra de la derecha
+    margin-bottom: 0;      separacion que abra de abajo
+    margin-left: auto;     separacion que abra de la izquierda*/
+    margin: 0 auto;
+}
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase; /*transformar el texto en mayusculas*/
+    font-weight: bold;
+    border-radius: .5rem; /*poner esquinas redondiadas*/
+    width: 90%;
     text-align: center;
+    border: none;
+}
+@media (min-width: 480px) {
+    .boton {
+        width: auto;
+    }
+}
+.boton:hover {
+    cursor: pointer; /*coloca la mano en el cursor*/
+}
+.sombra {
+    box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.65);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/*--- TIPOGRAFIA ---*/
+h1 {
     font-size: 3.8rem;  /* 1rem = 10px */
+}
+h2 {
+    font-size: 2.8rem;  /* 1rem = 10px */
+}
+h3 {
+    font-size: 2rem;  /* 1rem = 10px */
+}
+h1, h2, h3 {
+    text-align: center;
 }
 .titulo span {
     font-size: 2rem;
 }
-.contenedor {
-    width: 120rem;
-    /* margin-top: 0;      separacion que abra de arriba
-    margin-right: auto; separacion que abra de la derecha
-    margin-bottom: 0;   separacion que abra de abajo
-    margin-left: auto;  separacion que abra de la izquierda*/
-    margin: 0 auto;
-}
-/*----- CSS PARA LA NAVEGACION -----*/
+
+/*----- CSS PARA LA BARRA DE NAVEGACION -----*/
 .nav-bg{
-    background-color: var(--secundario);
+    background-color: var(--secundario); /*color para la barra de navegacion*/
 }
 .navegacion-principal {
-    padding: 1rem;
     display: flex;
-    justify-content: space-between; /*los enlaces se distribuyen en todo el nav*/
+    flex-direction: column;
+}
+@media (min-width: 480px) {
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between; /*los enlaces se distribuyen en todo el nav*/
+    }
 }
 .navegacion-principal a{
-    color: var(--blanco);
+    display: block;
+    text-align: center;
+    color: var(--blanco); /*color del texto de la barra de navegacion*/
     text-decoration: none;  /*utilizamos para quitar la linea del enlce*/
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem; /*ancho de la barra de navegacion*/
+}
+.navegacion-principal a:hover{
+    background-color: var(--primario); /*color de fondo cuando pasa el mause en los enlaces*/
+    color: var(--oscuro);
+}
+
+/*----- CSS PARA LA IMAGEN, ICONO LOCALIAZCION -----*/
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat; /*la imagen no se repita*/
+    background-size: cover; /*la imagen se acomode al tamaño de ancho*/
+    height: 450px;
+    position: relative; /*el padre siempre tiene que tener posicion relativa, para que el hijo pueda tener posicion absoluta*/
+    margin-bottom: 2rem;
+}
+.contenido-hero {
+    position: absolute;
+    background-color: rgba(0,0,0, 0.5); /*se utiliza para ponerle transparencia a una imagen*/
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column; /* estas cuatro lineas, se utilizan para centrar horizontalmente y verticalmente el contenido deseado*/
+    align-items: center;
+    justify-content: center;
+}
+.contenido-hero h2, .contenido-hero p {
+    color: var(--blanco);
+}
+
+/*----- CSS PARA EL CONTENIDO DE LOS SERVICIOS -----*/
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /*1fr equivale al 33.33%*/
+        column-gap: 2rem;
+    }    
+}
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+.servicio p {
+    line-height: 2; /*cambiar el interlineado*/
+    text-align: center;
+}
+.servicio .iconos {
+    height: 15rem;
+    width: 13rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*----- CSS PARA EL CONTENIDO DEL FORMULARIO -----*/
+.formulario {
+    background-color: var(--grisClaro);
+    width: min(60rem, 100%);/*utiliza el valor mas pequeño*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+.formulario fieldset {
+    border: none;
+}
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+.contenedor-campo {
+
+}
+.campo {
+    margin-bottom: 1rem;
+}
+.campo label {
+    color: var(--oscuro);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
 }
